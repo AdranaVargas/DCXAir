@@ -1,0 +1,13 @@
+<form [formGroup]="flightForm" (ngSubmit)="searchFlights()">
+    <input type="text" formControlName="origin" placeholder="Origen">
+    <input type="text" formControlName="destination" placeholder="Destino">
+    <select formControlName="currency">
+      <option value="USD">USD</option>
+      <option value="EUR">EUR</option>
+    </select>
+    <select formControlName="tripType">
+      <option value="oneway">Solo ida</option>
+      <option value="roundtrip">Ida y vuelta</option>
+    </select>
+    <button type="submit">Buscar</button>
+  </form>
