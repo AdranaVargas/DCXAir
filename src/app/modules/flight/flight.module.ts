@@ -11,8 +11,11 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { HttpMockRequestInterceptor } from './interceptor.mock';
+import { AlertModalComponent } from './components/searcher/alert-modal/alert-modal.component';
 
 
 const routes: Routes = [
@@ -25,7 +28,8 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    SearcherComponent
+    SearcherComponent,
+    AlertModalComponent
   ],
   imports: [
     RouterModule.forChild(routes),
@@ -38,6 +42,8 @@ const routes: Routes = [
     MatButtonToggleModule,
     MatButtonModule,
     MatSelectModule,
+    MatCardModule,
+    MatDialogModule
   ],
   providers: [
     FlightService,

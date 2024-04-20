@@ -63,8 +63,18 @@
     </div>
   </header>
   <main>
-    <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
-
+    <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8 flex justify-center">
+      <mat-card *ngFor="let flight of flights" class="w-1/2">
+        <mat-card-header class="flex-col">
+          <h1 class="text-md font-bold tracking-tight text-gray-900">{{flight.Transport.FlightCarrier}} - {{flight.Transport.FlightNumber}}</h1>
+          <div class="flex-row">
+            <mat-card-title>{{flight.Origin}} - {{flight.Destination}}</mat-card-title>
+          </div>
+          <div class="flex-row">
+            <mat-card-subtitle>{{flightForm.get('currency')?.value}} : {{flight.Price}}</mat-card-subtitle>
+          </div>          
+        </mat-card-header>
+      </mat-card>
     </div>
   </main>
 </div>

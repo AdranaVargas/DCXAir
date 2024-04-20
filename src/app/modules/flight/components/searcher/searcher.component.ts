@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FlightService } from '../../services/flight.service';
 import { Flight } from '../../models/flight-model';
 
+import { MatDialog } from '@angular/material/dialog';
+import { AlertModalComponent } from './alert-modal/alert-modal.component';
+
 @Component({
   selector: 'app-searcher',
   templateUrl: './searcher.component.html',
@@ -11,9 +14,8 @@ import { Flight } from '../../models/flight-model';
 export class SearcherComponent implements OnInit {
   flightForm!: FormGroup;
   flights: Flight[] = [];
-  errorMessage = '';
 
-  constructor(private fb: FormBuilder, private flightService: FlightService) {
+  constructor(private fb: FormBuilder, private flightService: FlightService, public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -31,14 +33,13 @@ export class SearcherComponent implements OnInit {
     this.flightService.searchFlights(origin, destination)
      .subscribe({
        next: (data) => {
-
          this.flights = data;
-         console.log(data)
-         this.errorMessage = '';
        },
-       error: () => {
-         this.errorMessage = 'No se han obtenido resultados para su consulta.';
-         this.flights = [];
+       error: (err) => {
+        this.dialog.open(AlertModalComponent, {
+          data: err
+        });
+        this.flights = [];
        }
      });
  }
