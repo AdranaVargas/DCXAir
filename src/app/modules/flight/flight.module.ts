@@ -6,6 +6,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FlightService } from './services/flight.service';
 
+import { MatButtonModule } from '@angular/material/button';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+
+
 const routes: Routes = [
   {
     path: '',
@@ -22,10 +29,16 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     CommonModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonToggleModule,
+    MatButtonModule,
+    MatSelectModule,
   ],
   providers: [
-    FlightService
+    FlightService,
   ]
 })
 export class FlightModule { }
